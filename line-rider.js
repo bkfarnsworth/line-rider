@@ -7,7 +7,7 @@ function getLineSegementsForParabola(a, b, c, xIncrementor, bbox) {
 	const canvasHeight = bottom - top;
 	const canvasCenter = {x: left + (canvasWidth/2), y: top + (canvasHeight/2) };
 	const xIncrement = canvasWidth * xIncrementor;
-	c = c || canvasCenter.y;
+	c = c || bottom;
 	const getY = x => (a * Math.pow(x, 2)) + (b * x) + c;
 
 	let allPoints = [];
@@ -42,7 +42,7 @@ function getLineSegementsForParabola(a, b, c, xIncrementor, bbox) {
 			"y1": point.y,
 			"x2": allPoints[i + 1].x,
 			"y2": allPoints[i + 1].y,
-			"flipped":true,
+			"flipped": false,
 			"leftExtended":false,
 			"rightExtended":false
 		})
@@ -54,7 +54,7 @@ function getLineSegementsForParabola(a, b, c, xIncrementor, bbox) {
 
 
 //act like the center point is 0,0
-let segments = getLineSegementsForParabola(0.0001, 0, null, 1/30, {
+let segments = getLineSegementsForParabola(0.00075, 0, null, 1/100, {
 	left: -350,
 	right: 4481, 
 	top: 825, //switched
