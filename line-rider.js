@@ -19,34 +19,14 @@ function getLineSegementsForParabola(a, b, c, xIncrementor, bbox) {
 		x += xIncrement;
 	}
 
-	// var debugCount = 0;
-
-	//since the center point isn't at 0, go the other way now
+	// since the center point isn't at 0, go the other way now
 	y = undefined
 	x = canvasCenter.x - xIncrement;
 	while(y > (top * polaritySwitch) || y === undefined) {
 		y = getY(x) * polaritySwitch
-		allPoints.push({x, y})
+		allPoints.unshift({x, y})
 		x -= xIncrement;
-
-		// if(debugCount > 5) {
-		// 	break;
-		// }
-		// debugCount++;
-
 	}
-
-
-	// let leftSidePoints = []
-	// rightSidePoints.forEach(point => {
-	// 	if(point.x === canvasCenter.x) {return};//don't do duplicate point for center
-	// 	leftSidePoints.unshift({
-	// 		y: point.y,
-	// 		x: canvasCenter.x - (point.x - canvasCenter.x)
-	// 	})
-	// })
-
-	// let allPoints = [...leftSidePoints, ...rightSidePoints];
 
 	let segments = [];
 	let startId = 1;
